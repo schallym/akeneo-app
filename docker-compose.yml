@@ -1,0 +1,23 @@
+services:
+  node:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app:cached
+      - /app/node_modules
+#    healthcheck:
+#      test: curl --fail http://localhost:3000 || exit 1
+#      interval: 1s
+#      retries: 60
+#      timeout: 60s
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER:     postgres-user
+      POSTGRES_PASSWORD: postgres-pwd
+      POSTGRES_DB:       postgres-db
+    ports:
+      - 5432:5432
+
