@@ -3,6 +3,7 @@ import { env } from "../../../../../conf/env";
 import { prisma } from "@/lib/utils";
 import { jwtDecode } from "jwt-decode";
 import { NextResponse } from "next/server";
+import { signIn, signOut } from "@/lib/actions/auth";
 
 type IdToken = {
   iss: string;
@@ -83,6 +84,9 @@ export async function GET(req: any): Promise<Response> {
         },
       });
     }
+
+    await signOut();
+    await signIn(userToken.email);
 
     return NextResponse.redirect(req.nextUrl.origin, { status: 307 });
   } catch (error: any) {

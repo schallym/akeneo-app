@@ -1,6 +1,6 @@
 "use server";
 
-import { getMainApp } from "@/lib/repositories/app-repository";
+import { getMainApp } from "@/lib/repositories/app.repository";
 import { createAppClient } from "@dataggo/node-akeneo-api";
 
 export async function testMainConnection(): Promise<void> {

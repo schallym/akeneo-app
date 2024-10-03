@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { getMainApp } from "@/lib/repositories/app-repository";
+import { getMainApp } from "@/lib/repositories/app.repository";
 import { useEffect, useState } from "react";
 import { AkeneoApp } from "@/lib/models";
 import { testMainConnection } from "@/lib/actions/app-actions";

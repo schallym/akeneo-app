@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { AkeneoIcon, BarChartsIcon, MainNavigationItem, SystemIcon } from "akeneo-design-system";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { isAuthenticated } from "@/lib/actions/auth";
 
 const Nav = styled.nav`
   display: flex;
@@ -17,6 +19,18 @@ const Nav = styled.nav`
 
 export default function SideNav() {
   const pathname = usePathname();
+  const [isUserAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+  useEffect(() => {
+    isAuthenticated().then((data) => {
+      setIsAuthenticated(data as boolean);
+    });
+  }, []);
+
+  if (!isUserAuthenticated) {
+    return null;
+  }
+
   return (
     <Nav>
       <Link href={"/"}>
