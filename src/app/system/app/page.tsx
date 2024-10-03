@@ -1,12 +1,16 @@
 "use client";
 
-import { Button, Helper, TextInput } from "akeneo-design-system";
 import Link from "next/link";
 import { getMainApp } from "@/lib/repositories/app-repository";
 import { useEffect, useState } from "react";
 import { AkeneoApp } from "@/lib/models";
 import { testMainConnection } from "@/lib/actions/app-actions";
 import toast from "react-hot-toast";
+import dynamic from "next/dynamic";
+
+const Button = dynamic(() => import("akeneo-design-system").then((mod) => mod.Button));
+const Helper = dynamic(() => import("akeneo-design-system").then((mod) => mod.Helper));
+const TextInput = dynamic(() => import("akeneo-design-system").then((mod) => mod.TextInput));
 
 export default function App() {
   const [app, setApp] = useState<AkeneoApp>({

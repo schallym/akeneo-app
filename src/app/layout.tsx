@@ -1,10 +1,12 @@
 import { Lato } from "next/font/google";
 import SideNav from "@/ui/nav/sidenav";
 import "./globals.css";
-import ThemeClient from "@/ui/theme-client";
 import { Toaster } from "react-hot-toast";
+import dynamic from "next/dynamic";
 
 const lato = Lato({ subsets: ["latin"], weight: "400", style: "normal" });
+
+const ThemeClient = dynamic(() => import("@/ui/theme-client"), { ssr: false });
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

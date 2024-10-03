@@ -1,7 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { CardIcon, SectionTitle } from "akeneo-design-system";
+import dynamic from "next/dynamic";
+
+const SectionTitle = dynamic(() => import("akeneo-design-system").then((mod) => mod.SectionTitle));
+const CardIcon = dynamic(() => import("akeneo-design-system").then((mod) => mod.CardIcon));
 
 export default function System() {
   const router = useRouter();
