@@ -13,10 +13,12 @@ export async function handleIpsyBundleWeightUpdate(uuid: string) {
 
   const bundle: Product = (await akeneoClient.raw.http.get(`/api/rest/v1/products-uuid/${uuid}`)).data;
   if (!bundle || bundle.family !== "ipsy_bundles") {
+    console.log(`Product ${uuid} is not a bundle`);
     return;
   }
 
   if (bundle?.values?.bundle_dynamic_weight?.at(0)?.data !== true) {
+    console.log(`Bundle ${uuid} is not dynamic weight`);
     return;
   }
 
@@ -39,9 +41,9 @@ export async function handleIpsyBundleWeightUpdate(uuid: string) {
         bundle?.quantified_associations?.bundle?.products.find((p) => p.uuid === product.uuid)?.quantity;
       return acc + weight;
     }, 0);
-
-    console.log(`Bundle weight for bundle ${uuid} is ${bundleWeight}`);
   }
+
+  console.log(`Bundle weight for bundle ${uuid} is ${bundleWeight}`);
 
   await akeneoClient.raw.http.patch(`/api/rest/v1/products-uuid/${uuid}`, {
     values: {
