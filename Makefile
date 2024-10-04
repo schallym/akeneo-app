@@ -51,4 +51,7 @@ tests-cov: ## Run the tests with coverage
 db-schema-update: ## Update the database schema
 	$(DOCKER_COMPOSE) exec node npx prisma db push
 
+# Dev
+ngrok: ## Start ngrok
+	ngrok http 3000
 
