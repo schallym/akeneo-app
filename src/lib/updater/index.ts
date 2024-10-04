@@ -1,1 +1,1 @@
-export * from './ipsy-weight.updater';
+export * from "./ipsy-weight.updater";
