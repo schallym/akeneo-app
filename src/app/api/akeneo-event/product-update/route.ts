@@ -1,5 +1,5 @@
 import { handleIpsyBundleWeightUpdate } from "@/lib/updater";
-import {handleUrlHistory} from "@/lib/updater/url-history.updater";
+import { handleUrlHistory } from "@/lib/updater/url-history.updater";
 
 export async function GET(): Promise<Response> {
   return new Response("Subscription to product update event is successful", { status: 200 });
