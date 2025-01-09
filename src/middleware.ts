@@ -6,9 +6,9 @@ export default async function middleware() {
   const cookie = cookies().get("session")?.value;
   const session = await decrypt(cookie);
 
-  /*if (!session?.userId) {
+  if (!session?.userId) {
     throw new Error("Unauthorized");
-  }*/
+  }
 
   return NextResponse.next();
 }
