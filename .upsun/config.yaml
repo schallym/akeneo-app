@@ -20,7 +20,7 @@ applications:
     # More information: https://docs.upsun.com/create-apps/app-reference/single-runtime-image.html#relationships
     relationships:
       postgresql:
-      
+
 
     # Mounts define directories that are writable after the build is complete.
     # More information: https://docs.upsun.com/create-apps/app-reference/single-runtime-image.html#mounts
@@ -28,8 +28,8 @@ applications:
       "/.npm":
         source: "storage"
         source_path: "npm"
-        
-      
+
+
 
     # The web key configures the web server running in front of your app.
     # More information: https://docs.upsun.com/create-apps/app-reference/single-runtime-image.html#web
@@ -52,8 +52,8 @@ applications:
       locations:
         "/":
           passthru: true
-          
-        
+
+
 
     # Alternate copies of the application to run as background processes.
     # More information: https://docs.upsun.com/create-apps/app-reference/single-runtime-image.html#workers
@@ -98,11 +98,12 @@ applications:
         set -eux
         npm i
         npm run build
-        
+
       # The deploy hook is run after the app container has been started, but before it has started accepting requests.
       # More information: https://docs.upsun.com/create-apps/hooks/hooks-comparison.html#deploy-hook
       deploy: |
         set -eux
+        npm run prisma:update
         # echo 'Put your deploy command here'
         
 
@@ -130,7 +131,7 @@ services:
   postgresql:
     type: postgresql:15 # All available versions are: 15, 14, 13, 12, 11
 
-  
+
 
 # The routes of the project.
 #
