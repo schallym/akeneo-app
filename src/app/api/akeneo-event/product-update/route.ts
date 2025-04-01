@@ -6,11 +6,14 @@ export async function GET(): Promise<Response> {
 }
 
 export async function POST(req: any): Promise<Response> {
-  const body = await req.json();
+  console.log("Received product update event");
 
-  // Handle the event
-  await handleIpsyBundleWeightUpdate(body.data.product.uuid);
-  await handleUrlHistory(body.data.product.uuid);
+  const body = await req.json();
+  console.log(body);
+
+  // // Handle the event
+  // await handleIpsyBundleWeightUpdate(body.data.product.uuid);
+  // await handleUrlHistory(body.data.product.uuid);
 
   return new Response("Product update event received", { status: 200 });
 }
