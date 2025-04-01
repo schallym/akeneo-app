@@ -21,7 +21,6 @@ type IdToken = {
 
 export async function GET(req: any): Promise<Response> {
   try {
-    console.log(req.nextUrl);
     const appClientSecret = env.AKENEO_APP_CLIENT_SECRET;
     const appClientId = env.AKENEO_APP_CLIENT_ID;
 
@@ -93,7 +92,7 @@ export async function GET(req: any): Promise<Response> {
     if (!appUrl || String(appUrl).includes("localhost")) appUrl = String(process.env.APP_URL);
     if (!appUrl) return Response.json({ message: "Invalid app URL" }, { status: 500 });
 
-    return NextResponse.redirect(req.nextUrl.origin, { status: 307 });
+    return NextResponse.redirect(appUrl, { status: 307 });
   } catch (error: any) {
     return Response.json({ message: error.message }, { status: 500 });
   }
