@@ -21,6 +21,7 @@ type IdToken = {
 
 export async function GET(req: any): Promise<Response> {
   try {
+    console.log(req.nextUrl);
     const appClientSecret = env.AKENEO_APP_CLIENT_SECRET;
     const appClientId = env.AKENEO_APP_CLIENT_ID;
 
