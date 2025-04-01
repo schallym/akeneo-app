@@ -4,7 +4,11 @@ import { cookies } from "next/headers";
 
 export default async function middleware() {
   const cookie = cookies().get("session")?.value;
+  console.log("Cookie", cookies().get("session"));
+
   const session = await decrypt(cookie);
+
+  console.log("Session", session);
 
   if (!session?.userId) {
     throw new Error("Unauthorized");
