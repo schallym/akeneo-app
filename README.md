@@ -40,7 +40,11 @@ This project extends the Akeneo PIM be implementing specific features.
 
 This project follows a component-based architecture with React hooks for state management and API calls to the Akeneo backend.
 Please refer to the documentation for more details on the file structure and component usage.
-Documentation is available in the `docs` directory.
+
+## Documentation
+- [File architecture](docs/file-architecture.md)
+- [Hosting](docs/hosting.md)
+- [Usages](docs/usages.md)
 
 # Tasks to be done before deploying to production
 - [ ] Set up an encoding system to store the custom app token.
