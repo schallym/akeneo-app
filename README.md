@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Akeneo Custom App Demo
 
-## Getting Started
+A React-based custom app for Akeneo PIM that allows managing demonstrate extendability of the Akeneo PIM.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project extends the Akeneo PIM be implementing specific features.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js - React framework
+- TypeScript - For type safety
+- Tailwind CSS - For styling
+- Akeneo Design System - UI components
+- React Hooks - For state management
+- PostgreSQL - Database
+- Upsun - Hosting platform
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Setup
 
-## Learn More
+**Requirements**
+- Docker
+- Make
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   make up
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Connect to Akeneo PIM API via the custom app system
+- UI extension to manage product scopable multi-select data with a dynamic interface
+- Consume Akeneo events to update product data in real-time
+- Manage custom product validations
+- Display badges into the product form depending on conditions
 
-## Deploy on Vercel
+## Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project follows a component-based architecture with React hooks for state management and API calls to the Akeneo backend.
+Please refer to the documentation for more details on the file structure and component usage.
+Documentation is available in the `docs` directory.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Tasks to be done before deploying to production
+- [ ] Set up an encoding system to store the custom app token.
+- [ ] Implement to security verification of the Akeneo events.
+- [ ] Implement to security verification of the Akeneo UI extensions.
+- [ ] Clean unnecessary users from the code base.
+

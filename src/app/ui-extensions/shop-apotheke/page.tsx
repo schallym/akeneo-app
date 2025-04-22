@@ -75,7 +75,7 @@ export default function ShopApothekeUIExtension() {
     fetchData();
   }, [productId]);
 
-  // Hide success indicator after 3 seconds
+  // Hide success indicator after 2 seconds
   useEffect(() => {
     let timer: NodeJS.Timeout;
 
