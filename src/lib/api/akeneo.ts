@@ -1,7 +1,7 @@
 "use server";
 
 import { getMainApp } from "@/lib/repositories/app.repository";
-import { AttributeOption, createAppClient, Product } from "@dataggo/node-akeneo-api";
+import { AttributeOption, createAppClient, EntityRecord, Product } from "@dataggo/node-akeneo-api";
 
 export type Channel = {
   code: string;
@@ -88,6 +88,25 @@ export async function updateProduct(uuid: string, product: Partial<Product>): Pr
     return response.data;
   } catch (error) {
     console.error("Error updating product", error);
+    // @ts-ignore
+    console.error(error.response.data.errors);
     throw new Error("Failed to update product");
   }
+}
+
+export async function getReferenceEntityRecords(referenceEntityCode: string): Promise<EntityRecord[]> {
+  const app = await getMainApp();
+  const akeneoClient = createAppClient({
+    url: app.pimUrl,
+    accessToken: app.apiToken as string,
+    axiosOptions: {
+      timeout: 300000, // 5mn
+    },
+  });
+
+  const response = await akeneoClient.raw.http.get(`/api/rest/v1/reference-entities/${referenceEntityCode}/records`, {
+    params: { limit: 100 },
+  });
+
+  return response.data._embedded.items;
 }
