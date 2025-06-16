@@ -6,7 +6,6 @@ import { akeneoAppScopes } from "@/lib/models";
 
 export async function GET(req: NextRequest): Promise<Response> {
   try {
-    console.log(req.nextUrl);
     const pimUrl = req.nextUrl?.searchParams.get("pim_url");
     if (!pimUrl) {
       return Response.json({ message: "PIM url is required" }, { status: 400 });
